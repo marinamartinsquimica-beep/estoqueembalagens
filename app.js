@@ -124,8 +124,7 @@ function editarEmbalagem(codigo) {
   atualizarTabelaGerenciar();
   montarCategorias();
 
-  recolherGerenciar();
-}
+  }
 
 /* ============================================================
    MONTAR CATEGORIAS
@@ -334,7 +333,7 @@ document.getElementById("btnAdicionar").addEventListener("click", () => {
   document.getElementById("novoNome").value = "";
   document.getElementById("novaCapacidade").value = "";
 
-  recolherGerenciar();
+  
 });
 
 /* ============================================================
