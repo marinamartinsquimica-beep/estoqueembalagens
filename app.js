@@ -270,6 +270,7 @@ document.getElementById("gerarPlanilhaBtn").addEventListener("click", () => {
     i.categoria,
     i.codigo,
     i.descricao,
+    i.estoqueAtual,
     i.pedir
   ])
 ];
