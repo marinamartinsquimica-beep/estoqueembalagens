@@ -264,7 +264,7 @@ document.getElementById("gerarPlanilhaBtn").addEventListener("click", () => {
   }
 
   const dados = [
-  ["Data", "Categoria", "Código", "Descrição", "Pedir"],
+  ["Data", "Categoria", "Código", "Descrição", "Estoque", "Pedir"],
   ...itensPedido.map(i => [
     i.data,
     i.categoria,
