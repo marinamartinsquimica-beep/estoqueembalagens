@@ -2,7 +2,7 @@
    BASE DE EMBALAGENS (EDITÁVEL)
 ============================================================ */
 let embalagensBase = JSON.parse(localStorage.getItem("embalagensBase")) || [
-  { categoria: "PRIMÁRIA", codigo: "ETJ.001", nome: "Estojo 06 - Grande Raiar", capacidade: 6 },
+  { categoria: "PRIMÁRIA", codigo: "ETJ.001", nome: "Estojo 06 - Grande Raiar", capacidade: 60 },
   { categoria: "PRIMÁRIA", codigo: "ETJ.010", nome: "Estojo 10 - Médio Raiar", capacidade: 80 },
   { categoria: "PRIMÁRIA", codigo: "ETJ.003", nome: "Estojo 10 - Grande Raiar", capacidade: 225 },
   { categoria: "PRIMÁRIA", codigo: "ETJ.004", nome: "Estojo 10 - Jumbo Raiar", capacidade: 80 },
@@ -28,21 +28,21 @@ let embalagensBase = JSON.parse(localStorage.getItem("embalagensBase")) || [
   { categoria: "PRIMÁRIA", codigo: "BLT.007", nome: "Blister 20 - Grande Taeq", capacidade: 10 },
   { categoria: "PRIMÁRIA", codigo: "BLT.012", nome: "Blister 20 - Grande Sitio Verde", capacidade: 10 },
 
-  { categoria: "PRIMÁRIA", codigo: "TMP.001", nome: "Tampa 30 Ovos - PVC", capacidade: 30 },
+  { categoria: "PRIMÁRIA", codigo: "TMP.001", nome: "Tampa 30 Ovos - PVC", capacidade: 4 },
   { categoria: "PRIMÁRIA", codigo: "TMP.002", nome: "Tampa 30 Ovos - Polpa", capacidade: 10 },
 
-  { categoria: "PRIMÁRIA", codigo: "ENC.001", nome: "Plástico Encolhível - Selagem", capacidade: 3 },
+  { categoria: "PRIMÁRIA", codigo: "ENC.001", nome: "Plástico Encolhível - Selagem", capacidade: 2 },
 
   { categoria: "SECUNDÁRIA", codigo: "CXA.001", nome: "Caixa 240/360 - Bandeja 30 Ovos", capacidade: 600 },
   { categoria: "SECUNDÁRIA", codigo: "CXA.002", nome: "Caixa 90 - Estojo 06 Ovos", capacidade: 800 },
-  { categoria: "SECUNDÁRIA", codigo: "CXA.003", nome: "Caixa 240 - Estojo 10 Jumbo", capacidade: 600 },
-  { categoria: "SECUNDÁRIA", codigo: "CXA.005", nome: "Caixa 240 - Estojo 10", capacidade: 1400 },
-  { categoria: "SECUNDÁRIA", codigo: "CXA.006", nome: "Caixa 240 - Blister 20 Ovos", capacidade: 1600 },
-  { categoria: "SECUNDÁRIA", codigo: "CXA.007", nome: "Caixa 240 - Blister 30 Ovos", capacidade: 600 },
-  { categoria: "SECUNDÁRIA", codigo: "CXA.008", nome: "Caixa 270 - Estojo 18 Ovos", capacidade: 300 },
+  { categoria: "SECUNDÁRIA", codigo: "CXA.003", nome: "Caixa 240 - Estojo 10 Jumbo", capacidade: 1500 },
+  { categoria: "SECUNDÁRIA", codigo: "CXA.005", nome: "Caixa 240 - Estojo 10", capacidade: 2000 },
+  { categoria: "SECUNDÁRIA", codigo: "CXA.006", nome: "Caixa 240 - Blister 20 Ovos", capacidade: 4800 },
+  { categoria: "SECUNDÁRIA", codigo: "CXA.007", nome: "Caixa 240 - Blister 30 Ovos", capacidade: 1600 },
+  { categoria: "SECUNDÁRIA", codigo: "CXA.008", nome: "Caixa 270 - Estojo 18 Ovos", capacidade: 750 },
 
-  { categoria: "DIVISÓRIAS", codigo: "DIV.001", nome: "Divisória 240/360 - Bandeja 30 Ovos", capacidade: 360 },
-  { categoria: "DIVISÓRIAS", codigo: "DIV.002", nome: "Divisória 90 - Estojo 06 Ovos", capacidade: 90 },
+  { categoria: "DIVISÓRIAS", codigo: "DIV.001", nome: "Divisória 240/360 - Bandeja 30 Ovos", capacidade: 1600 },
+  { categoria: "DIVISÓRIAS", codigo: "DIV.002", nome: "Divisória 90 - Estojo 06 Ovos", capacidade: 2000 },
   { categoria: "DIVISÓRIAS", codigo: "DIV.003", nome: "Divisória 240 - Estojo 10 Jumbo", capacidade: 240 },
   { categoria: "DIVISÓRIAS", codigo: "DIV.005", nome: "Divisória 240 - Estojo 10", capacidade: 240 },
   { categoria: "DIVISÓRIAS", codigo: "DIV.006", nome: "Divisória 240 - Blister 20 Ovos", capacidade: 240 },
