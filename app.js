@@ -370,3 +370,7 @@ document.addEventListener("DOMContentLoaded", () => {
   montarCategorias();
   atualizarTabelaGerenciar();
 });
+document.getElementById("btnRecolher").addEventListener("click", () => {
+  recolherGerenciar();
+});
+
