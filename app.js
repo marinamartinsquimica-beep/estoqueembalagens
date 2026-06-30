@@ -265,17 +265,16 @@ document.getElementById("gerarPlanilhaBtn").addEventListener("click", () => {
   }
 
   const dados = [
-    ["Data", "Categoria", "Código", "Descrição", "Capacidade", "Estoque Atual", "Pedir"],
-    ...itensPedido.map(i => [
-      i.data,
-      i.categoria,
-      i.codigo,
-      i.descricao,
-      i.capacidade,
-      i.estoqueAtual,
-      i.pedir
-    ])
-  ];
+  ["Data", "Categoria", "Código", "Descrição", "Pedir"],
+  ...itensPedido.map(i => [
+    i.data,
+    i.categoria,
+    i.codigo,
+    i.descricao,
+    i.pedir
+  ])
+];
+
 
   const wb = XLSX.utils.book_new();
   const ws = XLSX.utils.aoa_to_sheet(dados);
@@ -373,4 +372,3 @@ document.addEventListener("DOMContentLoaded", () => {
 document.getElementById("btnRecolher").addEventListener("click", () => {
   recolherGerenciar();
 });
-
