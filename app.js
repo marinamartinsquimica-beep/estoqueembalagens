@@ -14,7 +14,21 @@ let embalagensBase = [];
    CARREGAR BASE DO FIREBASE (TEMPO REAL)
 ============================================================ */
 onValue(ref(db, "embalagensBase"), snapshot => {
-  embalagensBase = snapshot.val() || [];
+  let dados = snapshot.val() || [];
+
+  // Se vier array → transforma em objeto usando o código como chave
+  if (Array.isArray(dados)) {
+    const obj = {};
+    dados.forEach(item => {
+      if (item && item.codigo) {
+        obj[item.codigo] = item;
+      }
+    });
+    embalagensBase = obj;
+  } else {
+    embalagensBase = dados;
+  }
+
   atualizarTabelaGerenciar();
   montarCategorias();
 });
