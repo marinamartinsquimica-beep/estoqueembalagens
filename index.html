@@ -57,7 +57,7 @@
       <button id="limparBtn">Limpar Pedido</button>
     </section>
 
-    <!-- TELA DE GERENCIAMENTO (OCULTA) -->
+    <!-- TELA DE GERENCIAMENTO -->
     <section class="gerenciar">
       <h2>Gerenciar Embalagens</h2>
 
@@ -72,7 +72,7 @@
         <button class="tab-btn" data-tab="tab-editar">Editar / Remover</button>
       </div>
 
-      <!-- ABA: ADICIONAR -->
+      <!-- ABA ADICIONAR -->
       <div id="tab-adicionar" class="tab-content active">
         <div class="form-gerenciar">
           <h3>Adicionar nova embalagem</h3>
@@ -93,7 +93,7 @@
         </div>
       </div>
 
-      <!-- ABA: EDITAR / REMOVER -->
+      <!-- ABA EDITAR -->
       <div id="tab-editar" class="tab-content">
         <h3>Lista de embalagens</h3>
         <table id="tabelaGerenciar">
@@ -114,8 +114,30 @@
 
   </main>
 
-  <!-- BIBLIOTECA XLSX (CORREÇÃO DO ERRO) -->
+  <!-- XLSX -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+  <!-- FIREBASE v12 (SEU CÓDIGO) -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+    import { getDatabase } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDWHcTpgctAl5OBp9xLTKNyZxX3AstbD1Y",
+      authDomain: "controleembalagens.firebaseapp.com",
+      databaseURL: "https://controleembalagens-default-rtdb.firebaseio.com",
+      projectId: "controleembalagens",
+      storageBucket: "controleembalagens.firebasestorage.app",
+      messagingSenderId: "47248064092",
+      appId: "1:47248064092:web:1b13fa285cd6a154e3f099"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    // Torna o db acessível ao app.js
+    window.db = db;
+  </script>
 
   <!-- SEU SCRIPT -->
   <script src="app.js"></script>
