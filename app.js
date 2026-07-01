@@ -1,5 +1,5 @@
 /* ============================================================
-   BASE DE EMBALAGENS — AGORA SINCRONIZADA COM FIREBASE
+   BASE DE EMBALAGENS — SINCRONIZADA COM FIREBASE
 ============================================================ */
 
 // Firebase já está carregado no index.html
@@ -14,23 +14,18 @@ let embalagensBase = [];
    CARREGAR BASE DO FIREBASE (TEMPO REAL)
 ============================================================ */
 onValue(ref(db, "embalagensBase"), snapshot => {
-  let dados = snapshot.val() || [];
+  embalagensBase = snapshot.val() || [];
 
-  // Se vier array → transforma em objeto usando o código como chave
-  if (Array.isArray(dados)) {
-    const obj = {};
-    dados.forEach(item => {
-      if (item && item.codigo) {
-        obj[item.codigo] = item;
-      }
-    });
-    embalagensBase = obj;
+  // Atualiza interface somente quando o DOM existir
+  if (document.readyState === "complete") {
+    atualizarTabelaGerenciar();
+    montarCategorias();
   } else {
-    embalagensBase = dados;
+    document.addEventListener("DOMContentLoaded", () => {
+      atualizarTabelaGerenciar();
+      montarCategorias();
+    });
   }
-
-  atualizarTabelaGerenciar();
-  montarCategorias();
 });
 
 /* ============================================================
@@ -102,20 +97,28 @@ function editarEmbalagem(codigo) {
 ============================================================ */
 function montarCategorias() {
   const selectCategoria = document.getElementById("categoria");
+  if (!selectCategoria) return;
 
   const categorias = [...new Set(
-    embalagensBase.map(e => e.categoria.normalize("NFC").trim())
+    embalagensBase.map(e => e.categoria?.normalize("NFC").trim())
   )].sort();
 
   selectCategoria.innerHTML = '<option value="">Selecione a categoria</option>';
 
   categorias.forEach(cat => {
+    if (!cat) return;
     const opt = document.createElement("option");
     opt.value = cat;
     opt.textContent = cat;
     selectCategoria.appendChild(opt);
   });
+}
 
+/* ============================================================
+   LISTENER DE CATEGORIA (UMA VEZ SÓ)
+============================================================ */
+const selectCategoria = document.getElementById("categoria");
+if (selectCategoria) {
   selectCategoria.addEventListener("change", () => {
     montarEmbalagens(selectCategoria.value);
   });
@@ -151,7 +154,7 @@ function montarEmbalagens(categoriaSelecionada) {
 }
 
 /* ============================================================
-   PEDIDO — CONTINUA EM LOCALSTORAGE
+   PEDIDO — LOCALSTORAGE
 ============================================================ */
 let itensPedido = JSON.parse(localStorage.getItem("itensPedido")) || [];
 
@@ -335,10 +338,5 @@ document.getElementById("btnGerenciar").addEventListener("click", () => {
    INICIALIZAÇÃO
 ============================================================ */
 document.addEventListener("DOMContentLoaded", () => {
-  montarCategorias();
-  atualizarTabelaGerenciar();
-});
-
-document.getElementById("btnRecolher").addEventListener("click", () => {
-  recolherGerenciar();
+  atualizarTabela();
 });
