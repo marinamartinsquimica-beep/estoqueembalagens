@@ -15,8 +15,10 @@
 
   <main>
 
+    <!-- BOTÃO PARA GERENCIAR EMBALAGENS -->
     <button id="btnGerenciar" class="btnGerenciar">Gerenciar Embalagens</button>
 
+    <!-- FORM PRINCIPAL -->
     <section class="form">
       <label>Data</label>
       <input type="date" id="data">
@@ -33,6 +35,7 @@
       <button id="addItemBtn">Adicionar Item</button>
     </section>
 
+    <!-- TABELA PRINCIPAL -->
     <section class="tabela">
       <h2>Itens do Pedido</h2>
       <table id="tabelaItens">
@@ -54,18 +57,22 @@
       <button id="limparBtn">Limpar Pedido</button>
     </section>
 
+    <!-- TELA DE GERENCIAMENTO (OCULTA) -->
     <section class="gerenciar">
       <h2>Gerenciar Embalagens</h2>
 
+      <!-- BOTÃO RECOLHER -->
       <button id="btnRecolher" class="btnGerenciar" style="background:#d32f2f;">
         Recolher
       </button>
 
+      <!-- ABAS -->
       <div class="tabs">
         <button class="tab-btn active" data-tab="tab-adicionar">Adicionar</button>
         <button class="tab-btn" data-tab="tab-editar">Editar / Remover</button>
       </div>
 
+      <!-- ABA: ADICIONAR -->
       <div id="tab-adicionar" class="tab-content active">
         <div class="form-gerenciar">
           <h3>Adicionar nova embalagem</h3>
@@ -86,6 +93,7 @@
         </div>
       </div>
 
+      <!-- ABA: EDITAR / REMOVER -->
       <div id="tab-editar" class="tab-content">
         <h3>Lista de embalagens</h3>
         <table id="tabelaGerenciar">
@@ -106,32 +114,10 @@
 
   </main>
 
-  <!-- XLSX -->
+  <!-- BIBLIOTECA XLSX (CORREÇÃO DO ERRO) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
-  <!-- FIREBASE CARREGADO DIRETO NO HTML -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
-    import { getDatabase } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-database.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyDWHcTpgctAl5OBp9xLTKNyZxX3AstbD1Y",
-      authDomain: "controleembalagens.firebaseapp.com",
-      databaseURL: "https://controleembalagens-default-rtdb.firebaseio.com",
-      projectId: "controleembalagens",
-      storageBucket: "controleembalagens.firebasestorage.app",
-      messagingSenderId: "47248064092",
-      appId: "1:47248064092:web:1b13fa285cd6a154e3f099"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
-
-    // expõe o db para o app.js
-    window.db = db;
-  </script>
-
-  <!-- SEU SCRIPT PRINCIPAL -->
+  <!-- SEU SCRIPT -->
   <script src="app.js"></script>
 
 </body>
