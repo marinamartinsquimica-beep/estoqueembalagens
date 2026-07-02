@@ -442,4 +442,104 @@ document.getElementById("gerarPlanilhaBtn").addEventListener("click", () => {
   const wb = XLSX.utils.table_to_book(tabela, { sheet: "Pedido" });
   XLSX.writeFile(wb, "pedido.xlsx");
 });
+let editando = null; // flag para saber se estamos editando uma linha
+
+// Botão principal
+document.getElementById("addItemBtn").addEventListener("click", () => {
+  const data = document.getElementById("data").value;
+  const categoria = document.getElementById("categoria").value;
+  const embalagem = document.getElementById("embalagem").value;
+  const estoqueAtual = document.getElementById("estoqueAtual").value;
+
+  if (!data || !categoria || !embalagem || !estoqueAtual) {
+    alert("Preencha todos os campos!");
+    return;
+  }
+
+  if (editando) {
+    // Atualiza linha existente
+    const cells = editando.querySelectorAll("td");
+    cells[0].textContent = data;
+    cells[1].textContent = categoria;
+    cells[2].textContent = "COD123"; // exemplo
+    cells[3].textContent = embalagem;
+    cells[4].textContent = "500ml"; // exemplo
+    cells[5].textContent = estoqueAtual;
+    cells[6].textContent = "SIM";
+
+    editando = null;
+    document.getElementById("addItemBtn").textContent = "Adicionar Item";
+  } else {
+    // Cria nova linha
+    adicionarItem(data, categoria, "COD123", embalagem, "500ml", estoqueAtual, "SIM");
+  }
+
+  // Limpa formulário
+  document.getElementById("data").value = "";
+  document.getElementById("categoria").value = "";
+  document.getElementById("embalagem").value = "";
+  document.getElementById("estoqueAtual").value = "";
+});
+
+function adicionarItem(data, categoria, codigo, descricao, capacidade, estoqueAtual, pedir) {
+  const tabela = document.querySelector("#tabelaItens tbody");
+  const linha = document.createElement("tr");
+
+  linha.innerHTML = `
+    <td>${data}</td>
+    <td>${categoria}</td>
+    <td>${codigo}</td>
+    <td>${descricao}</td>
+    <td>${capacidade}</td>
+    <td>${estoqueAtual}</td>
+    <td>${pedir}</td>
+    <td>
+      <button class="btnEditar">Editar</button>
+      <button class="btnExcluir">Excluir</button>
+    </td>
+  `;
+
+  tabela.appendChild(linha);
+
+  // Botão Excluir
+  linha.querySelector(".btnExcluir").addEventListener("click", () => {
+    linha.remove();
+    if (editando === linha) {
+      editando = null;
+      document.getElementById("addItemBtn").textContent = "Adicionar Item";
+    }
+  });
+
+  // Botão Editar
+  linha.querySelector(".btnEditar").addEventListener("click", () => {
+    editarItem(linha);
+  });
+}
+
+function editarItem(linha) {
+  const cells = linha.querySelectorAll("td");
+
+  document.getElementById("data").value = cells[0].textContent;
+  document.getElementById("categoria").value = cells[1].textContent;
+  document.getElementById("embalagem").value = cells[3].textContent;
+  document.getElementById("estoqueAtual").value = cells[5].textContent;
+
+  editando = linha;
+  document.getElementById("addItemBtn").textContent = "Salvar Alterações";
+}
+
+// Limpar tabela
+document.getElementById("limparBtn").addEventListener("click", () => {
+  document.querySelector("#tabelaItens tbody").innerHTML = "";
+  editando = null;
+  document.getElementById("addItemBtn").textContent = "Adicionar Item";
+});
+
+// Gerar planilha Excel
+document.getElementById("gerarPlanilhaBtn").addEventListener("click", () => {
+  const tabela = document.getElementById("tabelaItens");
+  const wb = XLSX.utils.table_to_book(tabela, { sheet: "Pedido" });
+  XLSX.writeFile(wb, "pedido.xlsx");
+});
+
 
