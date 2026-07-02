@@ -116,36 +116,6 @@
 
   <!-- BIBLIOTECA XLSX (CORREÇÃO DO ERRO) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-
-  <script>
-
-  }
-
-function editarLinha(botao) {
-    let linha = botao.parentNode.parentNode;
-    indiceEditando = linha.rowIndex - 1;
-
-    let dataBR = linha.cells[0].innerText;
-    let partes = dataBR.split("/");
-    campoData.value = `${partes[2]}-${partes[1]}-${partes[0]}`;
-
-    campoSku.value = linha.cells[1].innerText;
-    campoPalete.value = linha.cells[2].innerText;
-
-    campoLote.value = linha.cells[3].innerText;
-    campoLote3.value = linha.cells[4].innerText;
-    campoLote10.value = linha.cells[5].innerText;
-
-    campoCaixas.value = linha.cells[6].innerText;
-}
-
-function excluirLinha(botao) {
-    botao.parentNode.parentNode.remove();
-    salvarLocalStorage();
-    indiceEditando = null;
-}
-
-  <script/>
     
    <!-- SEU SCRIPT -->
   <script src="app.js"></script>
