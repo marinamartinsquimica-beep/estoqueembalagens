@@ -16,14 +16,14 @@ let embalagensBase = [];
 onValue(ref(db, "embalagensBase"), snapshot => {
   embalagensBase = snapshot.val() || [];
 
-  // Atualiza interface somente quando o DOM existir
+  // Garante que o DOM já existe antes de montar
   if (document.readyState === "complete") {
-    atualizarTabelaGerenciar();
     montarCategorias();
+    atualizarTabelaGerenciar();
   } else {
-    document.addEventListener("DOMContentLoaded", () => {
-      atualizarTabelaGerenciar();
+    window.addEventListener("load", () => {
       montarCategorias();
+      atualizarTabelaGerenciar();
     });
   }
 });
