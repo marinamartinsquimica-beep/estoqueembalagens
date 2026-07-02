@@ -372,3 +372,74 @@ document.addEventListener("DOMContentLoaded", () => {
 document.getElementById("btnRecolher").addEventListener("click", () => {
   recolherGerenciar();
 });
+// Função para adicionar item na tabela
+document.getElementById("addItemBtn").addEventListener("click", () => {
+  const data = document.getElementById("data").value;
+  const categoria = document.getElementById("categoria").value;
+  const embalagem = document.getElementById("embalagem").value;
+  const estoqueAtual = document.getElementById("estoqueAtual").value;
+
+  if (!data || !categoria || !embalagem || !estoqueAtual) {
+    alert("Preencha todos os campos!");
+    return;
+  }
+
+  adicionarItem(data, categoria, "COD123", embalagem, "500ml", estoqueAtual, "SIM");
+});
+
+function adicionarItem(data, categoria, codigo, descricao, capacidade, estoqueAtual, pedir) {
+  const tabela = document.querySelector("#tabelaItens tbody");
+  const linha = document.createElement("tr");
+
+  linha.innerHTML = `
+    <td>${data}</td>
+    <td>${categoria}</td>
+    <td>${codigo}</td>
+    <td>${descricao}</td>
+    <td>${capacidade}</td>
+    <td>${estoqueAtual}</td>
+    <td>${pedir}</td>
+    <td>
+      <button class="btnEditar">Editar</button>
+      <button class="btnExcluir">Excluir</button>
+    </td>
+  `;
+
+  tabela.appendChild(linha);
+
+  // Botão Excluir
+  linha.querySelector(".btnExcluir").addEventListener("click", () => {
+    linha.remove();
+  });
+
+  // Botão Editar
+  linha.querySelector(".btnEditar").addEventListener("click", () => {
+    editarItem(linha);
+  });
+}
+
+// Função de edição
+function editarItem(linha) {
+  const cells = linha.querySelectorAll("td");
+
+  document.getElementById("data").value = cells[0].textContent;
+  document.getElementById("categoria").value = cells[1].textContent;
+  document.getElementById("embalagem").value = cells[3].textContent;
+  document.getElementById("estoqueAtual").value = cells[5].textContent;
+
+  // Remove a linha antiga para que ao salvar seja criada uma nova
+  linha.remove();
+}
+
+// Função para limpar tabela
+document.getElementById("limparBtn").addEventListener("click", () => {
+  document.querySelector("#tabelaItens tbody").innerHTML = "";
+});
+
+// Função para gerar planilha Excel
+document.getElementById("gerarPlanilhaBtn").addEventListener("click", () => {
+  const tabela = document.getElementById("tabelaItens");
+  const wb = XLSX.utils.table_to_book(tabela, { sheet: "Pedido" });
+  XLSX.writeFile(wb, "pedido.xlsx");
+});
+
