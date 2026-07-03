@@ -564,4 +564,14 @@ function adicionarItem() {
 // Conectar ao botão "Adicionar Item"
 document.querySelector("#addItemBtn").addEventListener("click", adicionarItem);
 
+// app.js
+
+function calcularPedido(capacidade, estoqueAtual) {
+  const pedido = capacidade - estoqueAtual;
+  return pedido;
+}
+
+// Exemplos de uso:
+console.log(calcularPedido(500, 320)); // Saída: 180
+console.log(calcularPedido(500, 520)); // Saída: -20
 
