@@ -480,3 +480,88 @@ function adicionarItem() {
 
 // Conectar ao botão "Adicionar Item"
 document.querySelector("#addItemBtn").addEventListener("click", adicionarItem);
+
+// Função para adicionar item ao pedido
+function adicionarItem() {
+  const tabela = document.querySelector("#tabelaItens tbody");
+
+  // Captura dos valores do formulário
+  const data = document.querySelector("#data").value;
+  const categoria = document.querySelector("#categoria").value;
+  const embalagem = document.querySelector("#embalagem").value;
+  const estoqueAtual = parseInt(document.querySelector("#estoqueAtual").value);
+
+  // Descrição correta (pode vir do nome da embalagem)
+  const descricao = embalagem || "Sem descrição";
+
+  // Lógica real para o campo "Pedir"
+  // Exemplo: se o estoque for menor que 50, precisa pedir
+  const limiteMinimo = 50;
+  const pedir = estoqueAtual < limiteMinimo ? "Pedir" : "OK";
+
+  // Criar nova linha
+  const tr = document.createElement("tr");
+
+  tr.innerHTML = `
+    <td>${data}</td>
+    <td>${categoria}</td>
+    <td>${embalagem}</td>
+    <td>${descricao}</td>
+    <td>500ml</td>
+    <td>${estoqueAtual}</td>
+    <td>${pedir}</td>
+    <td>
+      <button class="btnEditar">Editar</button>
+      <button class="btnRemover">Remover</button>
+    </td>
+  `;
+
+  tabela.appendChild(tr);
+
+  // Eventos dos botões
+  const btnEditar = tr.querySelector(".btnEditar");
+  const btnRemover = tr.querySelector(".btnRemover");
+
+  // Editar linha
+  btnEditar.addEventListener("click", () => {
+    const cells = tr.querySelectorAll("td");
+    for (let i = 0; i < cells.length - 1; i++) {
+      const valorAtual = cells[i].innerText;
+      cells[i].innerHTML = `<input type="text" value="${valorAtual}">`;
+    }
+
+    btnEditar.style.display = "none";
+    const btnSalvar = document.createElement("button");
+    btnSalvar.textContent = "Salvar";
+    btnSalvar.className = "btnSalvar";
+    cells[cells.length - 1].insertBefore(btnSalvar, btnRemover);
+
+    btnSalvar.addEventListener("click", () => {
+      for (let i = 0; i < cells.length - 1; i++) {
+        const input = cells[i].querySelector("input");
+        if (input) {
+          cells[i].innerText = input.value;
+        }
+      }
+
+      // Recalcular o campo "Pedir" após edição
+      const novoEstoque = parseInt(cells[5].innerText);
+      cells[6].innerText = novoEstoque < limiteMinimo ? "Pedir" : "OK";
+
+      btnSalvar.remove();
+      btnEditar.style.display = "inline-block";
+    });
+  });
+
+  // Remover linha
+  btnRemover.addEventListener("click", () => {
+    if (confirm(`Deseja remover o item: ${descricao}?`)) {
+      tr.remove();
+    }
+  });
+}
+
+// Conectar ao botão "Adicionar Item"
+document.querySelector("#addItemBtn").addEventListener("click", adicionarItem);
+
+
