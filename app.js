@@ -284,24 +284,47 @@ document.getElementById("gerarPlanilhaBtn").addEventListener("click", () => {
 /* ============================================================
    GERENCIAR — TABELA
 ============================================================ */
-function atualizarTabelaGerenciar() {
-  const tbody = document.querySelector("#tabelaGerenciar tbody");
+function preencherTabelaGerenciar(tbody, showEdit, showRemove) {
   if (!tbody) return;
-
   tbody.innerHTML = "";
   embalagensBase.forEach(e => {
     const tr = document.createElement("tr");
+    const actions = [];
+
+    if (showEdit) {
+      actions.push(`<button class="btnEditar" onclick="editarEmbalagem('${e.codigo}')">Editar</button>`);
+    }
+    if (showRemove) {
+      actions.push(`<button class="btnRemover" onclick="removerEmbalagem('${e.codigo}'); atualizarTabelaGerenciar(); montarCategorias();">Remover</button>`);
+    }
+
     tr.innerHTML = `
       <td>${e.categoria}</td>
       <td>${e.codigo}</td>
       <td>${e.nome}</td>
       <td>${e.capacidade}</td>
-      <td>
-        <button class="btnEditar" onclick="editarEmbalagem('${e.codigo}')">Editar</button>
-        <button class="btnRemover" onclick="removerEmbalagem('${e.codigo}'); atualizarTabelaGerenciar(); montarCategorias();">Remover</button>
-      </td>
+      <td>${actions.join('')}</td>
     `;
     tbody.appendChild(tr);
+  });
+}
+
+function atualizarTabelaGerenciar() {
+  preencherTabelaGerenciar(document.querySelector("#tabelaGerenciarEditar tbody"), true, false);
+  preencherTabelaGerenciar(document.querySelector("#tabelaGerenciarRemover tbody"), false, true);
+}
+
+function setupGerenciarTabs() {
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      document.querySelectorAll(".tab-content").forEach(tab => tab.classList.remove("active"));
+      const tabId = btn.getAttribute("data-tab");
+      const target = document.getElementById(tabId);
+      if (target) target.classList.add("active");
+    });
   });
 }
 
@@ -312,6 +335,7 @@ document.addEventListener("DOMContentLoaded", () => {
   montarCategorias();
   atualizarTabelaGerenciar();
   atualizarTabela();
+  setupGerenciarTabs();
   // Listener para adicionar nova embalagem pela UI de gerenciamento
   const btnAdicionar = document.getElementById("btnAdicionar");
   if (btnAdicionar) {
@@ -342,13 +366,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // PWA install prompt handling
 let deferredInstallPrompt = null;
+let installHideTimeout = null;
 function isStandaloneMode() {
   return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+}
+function hideInstallBanner() {
+  const banner = document.getElementById('installBanner');
+  if (!banner) return;
+  banner.classList.remove('show');
+  clearTimeout(installHideTimeout);
+  installHideTimeout = null;
+  setTimeout(() => {
+    if (banner) banner.style.display = 'none';
+  }, 230);
 }
 function showInstallBanner() {
   const banner = document.getElementById('installBanner');
   if (banner && !isStandaloneMode()) {
-    banner.style.display = 'block';
+    banner.style.display = 'inline-flex';
+    requestAnimationFrame(() => banner.classList.add('show'));
+    clearTimeout(installHideTimeout);
+    installHideTimeout = setTimeout(hideInstallBanner, 6000);
   }
 }
 
@@ -362,6 +400,37 @@ window.addEventListener('DOMContentLoaded', () => {
   if (isStandaloneMode()) {
     const banner = document.getElementById('installBanner');
     if (banner) banner.style.display = 'none';
+  }
+
+  const installBanner = document.getElementById('installBanner');
+  const installClose = document.getElementById('installClose');
+
+  if (installBanner) {
+    installBanner.addEventListener('click', async (event) => {
+      if (event.target.closest('#installClose')) return;
+      if (!deferredInstallPrompt) return;
+
+      deferredInstallPrompt.prompt();
+      const choice = await deferredInstallPrompt.userChoice;
+      if (choice.outcome === 'accepted') {
+        console.log('User accepted the A2HS prompt');
+      } else {
+        console.log('User dismissed the A2HS prompt');
+      }
+      deferredInstallPrompt = null;
+      hideInstallBanner();
+    });
+  }
+
+  if (installClose) {
+    installClose.addEventListener('click', (event) => {
+      event.stopPropagation();
+      hideInstallBanner();
+    });
+  }
+
+  if (deferredInstallPrompt) {
+    showInstallBanner();
   }
 });
 

@@ -29,6 +29,7 @@
   <div id="installBanner" class="install-banner" style="display:none;">
     <img class="install-icon" src="icons/icon-192.png" alt="App icon">
     <span>Instalar app</span>
+    <button id="installClose" class="install-close" aria-label="Fechar">×</button>
   </div>
 
   <main>
@@ -88,7 +89,8 @@
       <!-- ABAS -->
       <div class="tabs">
         <button class="tab-btn active" data-tab="tab-adicionar">Adicionar</button>
-        <button class="tab-btn" data-tab="tab-editar">Editar / Remover</button>
+        <button class="tab-btn" data-tab="tab-editar">Editar</button>
+        <button class="tab-btn" data-tab="tab-remover">Remover</button>
       </div>
 
       <!-- ABA: ADICIONAR -->
@@ -112,10 +114,10 @@
         </div>
       </div>
 
-      <!-- ABA: EDITAR / REMOVER -->
+      <!-- ABA: EDITAR -->
       <div id="tab-editar" class="tab-content">
-        <h3>Lista de embalagens</h3>
-        <table id="tabelaGerenciar">
+        <h3>Editar embalagens</h3>
+        <table id="tabelaGerenciarEditar">
           <thead>
             <tr>
               <th>Categoria</th>
@@ -125,28 +127,24 @@
               <th>Ações</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <!-- ABA: REMOVER -->
+      <div id="tab-remover" class="tab-content">
+        <h3>Remover embalagens</h3>
+        <table id="tabelaGerenciarRemover">
+          <thead>
             <tr>
-              <td>Bebidas</td>
-              <td>001</td>
-              <td>Garrafa PET</td>
-              <td>500ml</td>
-              <td>
-                <button class="btnEditar">Editar</button>
-                <button class="btnRemover">Remover</button>
-              </td>
+              <th>Categoria</th>
+              <th>Código</th>
+              <th>Nome</th>
+              <th>Capacidade</th>
+              <th>Ações</th>
             </tr>
-            <tr>
-              <td>Alimentos</td>
-              <td>002</td>
-              <td>Pote Plástico</td>
-              <td>1L</td>
-              <td>
-                <button class="btnEditar">Editar</button>
-                <button class="btnRemover">Remover</button>
-              </td>
-            </tr>
-          </tbody>
+          </thead>
+          <tbody></tbody>
         </table>
       </div>
 
