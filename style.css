@@ -196,16 +196,6 @@ button:active { transform: translateY(1px); filter: brightness(0.9); }
   button { font-size: 0.9rem; }
 }
 
-/* GitHub link */
-#githubLink {
-  color: #fff;
-  text-decoration: none;
-  background: rgba(0,0,0,0.15);
-  padding: 6px 10px;
-  border-radius: 4px;
-}
-
-#githubLink:hover { background: rgba(255,255,255,0.08); }
 
 /* Layout: form + tabela side-by-side on wide viewports */
 @media (min-width: 900px) {
