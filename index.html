@@ -10,20 +10,26 @@
   <link rel="icon" href="icons/icon-192.png" sizes="192x192">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="Embalagens">
+  <meta name="apple-mobile-web-app-title" content="EMBALAGENS">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <link rel="apple-touch-startup-image" href="icons/icon-512.png">
 </head>
 
 <body>
+  <div id="splashOverlay" class="splash-overlay">
+    <div class="splash-content">
+      <img class="splash-logo" src="icons/icon-192.png" alt="Logo de Embalagens">
+      <div class="splash-title">ESTOQUE DE EMBALAGENS</div>
+    </div>
+  </div>
 
   <header>
     <h1>Controle de Embalagens</h1>
-    <div style="position:absolute;right:1rem;top:1rem;display:flex;gap:8px;align-items:center;">
-      <button id="installBtn" style="display:none;">Instalar App</button>
-      <a id="githubLink" href="https://marinamartinsquimica-beep.github.io/estoqueembalagens/" target="_blank">Ver no GitHub</a>
-    </div>
   </header>
+  <div id="installBanner" class="install-banner" style="display:none;">
+    <img class="install-icon" src="icons/icon-192.png" alt="App icon">
+    <span>Instalar app</span>
+  </div>
 
   <main>
 

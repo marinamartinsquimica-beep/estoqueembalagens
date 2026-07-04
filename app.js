@@ -244,6 +244,19 @@ document.getElementById("limparBtn").addEventListener("click", () => {
 /* ============================================================
    GERAR PLANILHA
 ============================================================ */
+function formatDateBR(dateString) {
+  if (!dateString) return "";
+  const parts = dateString.split("-");
+  if (parts.length === 3) {
+    return `${parts[2]}/${parts[1]}/${parts[0]}`;
+  }
+  const parsed = new Date(dateString);
+  if (!isNaN(parsed)) {
+    return parsed.toLocaleDateString("pt-BR");
+  }
+  return dateString;
+}
+
 document.getElementById("gerarPlanilhaBtn").addEventListener("click", () => {
   if (!itensPedido.length) {
     alert("Nenhum item no pedido.");
@@ -252,7 +265,14 @@ document.getElementById("gerarPlanilhaBtn").addEventListener("click", () => {
 
   const dados = [
     ["Data", "Categoria", "Código", "Descrição", "Estoque", "Pedir"],
-    ...itensPedido.map(i => [i.data, i.categoria, i.codigo, i.descricao, i.estoqueAtual, i.pedir])
+    ...itensPedido.map(i => [
+      formatDateBR(i.data),
+      i.categoria,
+      i.codigo,
+      i.descricao,
+      i.estoqueAtual,
+      i.pedir
+    ])
   ];
 
   const wb = XLSX.utils.book_new();
@@ -322,58 +342,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // PWA install prompt handling
 let deferredInstallPrompt = null;
+function isStandaloneMode() {
+  return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+}
+function showInstallBanner() {
+  const banner = document.getElementById('installBanner');
+  if (banner && !isStandaloneMode()) {
+    banner.style.display = 'block';
+  }
+}
+
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredInstallPrompt = e;
-  // show install button if present
-  const installBtn = document.getElementById('installBtn');
-  if (installBtn) {
-    installBtn.style.display = 'inline-block';
-    installBtn.classList.remove('hidden');
-  }
+  showInstallBanner();
 });
 
-const githubLink = document.getElementById('githubLink');
-if (githubLink) {
-  githubLink.addEventListener('click', async (ev) => {
-    // When user clicks GitHub link, offer install if available
-    if (deferredInstallPrompt) {
-      ev.preventDefault();
-      deferredInstallPrompt.prompt();
-      const choice = await deferredInstallPrompt.userChoice;
-      if (choice.outcome === 'accepted') {
-        console.log('User accepted the A2HS prompt');
-      } else {
-        console.log('User dismissed the A2HS prompt');
-        // fallback: open GitHub
-        window.open(githubLink.href, '_blank');
-      }
-      deferredInstallPrompt = null;
-    }
-    // otherwise let the link open as normal
-  });
-}
-
-// Install button click handler
-const installBtn = document.getElementById('installBtn');
-if (installBtn) {
-  installBtn.addEventListener('click', async (ev) => {
-    if (!deferredInstallPrompt) {
-      alert('Instalação não disponível no momento.');
-      return;
-    }
-    deferredInstallPrompt.prompt();
-    const choice = await deferredInstallPrompt.userChoice;
-    if (choice.outcome === 'accepted') {
-      console.log('User accepted the install prompt');
-    } else {
-      console.log('User dismissed the install prompt');
-    }
-    // hide install button after prompt
-    installBtn.style.display = 'none';
-    deferredInstallPrompt = null;
-  });
-}
+window.addEventListener('DOMContentLoaded', () => {
+  if (isStandaloneMode()) {
+    const banner = document.getElementById('installBanner');
+    if (banner) banner.style.display = 'none';
+  }
+});
 
 // Register service worker if available
 if ('serviceWorker' in navigator) {
@@ -398,6 +388,16 @@ document.getElementById("btnRecolher").addEventListener("click", () => {
   const tela = document.querySelector(".gerenciar");
   tela.style.display = "none";
   window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+window.addEventListener('load', () => {
+  const splash = document.getElementById('splashOverlay');
+  if (splash) {
+    setTimeout(() => {
+      splash.style.opacity = '0';
+      setTimeout(() => splash.remove(), 500);
+    }, 2200);
+  }
 });
 
 

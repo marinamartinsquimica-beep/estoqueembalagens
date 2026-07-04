@@ -1,6 +1,6 @@
 {
-  "name": "Estoque de Embalagens",
-  "short_name": "Embalagens",
+  "name": "EMBALAGENS",
+  "short_name": "EMBALAGENS",
   "description": "App para controle de estoque de embalagens, com geração de planilha e salvamento local.",
   "lang": "pt-BR",
   "start_url": "./",
