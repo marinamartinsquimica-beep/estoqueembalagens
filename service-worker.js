@@ -1,4 +1,4 @@
-const CACHE_NAME = "embalagens-profissional-v4";
+const CACHE_NAME = "embalagens-profissional-v5";
 const URLS_TO_CACHE = [
   "./",
   "./index.html",
