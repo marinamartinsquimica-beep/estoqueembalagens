@@ -1,0 +1,22 @@
+PUBLICAR NO GITHUB PAGES
+
+1. Apague os arquivos antigos do repositório.
+2. Extraia este ZIP.
+3. Envie TODO o conteúdo extraído para a raiz do repositório.
+4. A raiz deve ficar assim:
+
+index.html
+manifest.json
+service-worker.js
+version.json
+README.md
+SUPABASE_PASSO_A_PASSO.md
+icons/icon-192.png
+icons/icon-512.png
+
+5. Não renomeie index.html.
+6. Não coloque os arquivos dentro de uma pasta extra.
+7. Depois de publicar, abra:
+https://marinamartinsquimica-beep.github.io/estoqueembalagens/?v=limpar
+
+Se ainda aparecer PNG/IHDR, limpe os dados do site e remova o app instalado antigo.
