@@ -1,4 +1,4 @@
-const CACHE_NAME = "embalagens-profissional-v5";
+const CACHE_NAME = "embalagens-profissional-2026.10.25.1";
 const URLS_TO_CACHE = [
   "./",
   "./index.html",
@@ -29,6 +29,8 @@ self.addEventListener("fetch", event => {
   if (event.request.method !== "GET") return;
 
   const url = new URL(event.request.url);
+  // Não armazena em cache respostas externas, especialmente as consultas ao Supabase.
+  if (url.origin !== self.location.origin) return;
   const isVersionFile = url.pathname.endsWith("/version.json");
 
   if (isVersionFile) {
