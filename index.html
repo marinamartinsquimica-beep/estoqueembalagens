@@ -100,11 +100,11 @@
 </style>
 </head>
 <body>
-<div id="splash" class="splash"><div class="splash-card"><img src="icons/icon-512.png" alt="Logo"><h1>Controle de Embalagens</h1><p class="splash-version">Versão 2026.10.25.2</p><p class="splash-author">Criado por Marina Martins Costa</p><p>Carregando sistema</p><div class="loader"></div></div></div>
+<div id="splash" class="splash"><div class="splash-card"><img src="icons/icon-512.png" alt="Logo"><h1>Controle de Embalagens</h1><p class="splash-version">Versão 2026.10.25.3</p><p class="splash-author">Criado por Marina Martins Costa</p><p>Carregando sistema</p><div class="loader"></div></div></div>
 <div id="installBanner" class="install-banner"><img src="icons/icon-192.png" alt=""><span>Instalar app</span><button id="installClose">×</button></div>
 <div class="app">
   <aside class="sidebar">
-    <div class="brand"><img src="icons/icon-192.png" alt=""><div><h1>Embalagens</h1><p class="brand-version">Versão 2026.10.25.2</p><p class="brand-author">Criado por Marina Martins Costa</p></div></div>
+    <div class="brand"><img src="icons/icon-192.png" alt=""><div><h1>Embalagens</h1><p class="brand-version">Versão 2026.10.25.3</p><p class="brand-author">Criado por Marina Martins Costa</p></div></div>
     <nav class="nav">
       <button class="active" data-page="dashboard">🏠 Dashboard</button>
       <button data-page="pedido">📝 Novo pedido</button>
@@ -128,8 +128,8 @@
     <section id="pedido" class="page"><div class="grid"><section class="card"><h3>Novo pedido</h3><div class="form-grid"><div class="field"><label>Data</label><input type="date" id="data"></div><div class="field"><label>Categoria</label><select id="categoria"></select></div><div class="field full"><label>Embalagem</label><select id="embalagem"></select></div><div class="field full"><label>Estoque atual</label><input type="number" id="estoqueAtual" min="0"></div></div><div class="actions"><button id="addItemBtn" class="btn blue">💾 Adicionar Item</button><button id="gerarPlanilhaBtn" class="btn green">📊 Gerar Planilha</button><button id="limparBtn" class="btn red">🗑️ Limpar Pedido</button></div></section><section class="card"><div class="toolbar"><h3 style="margin:0;flex:1">Itens do pedido</h3><span class="badge">📋 Lista</span></div><div id="pedidoWrap" class="table-wrap"><table id="tabelaItens"><thead><tr><th>Data</th><th>Categoria</th><th>Código</th><th>Descrição</th><th>Capacidade</th><th>Estoque Atual</th><th>Pedir</th><th>Ações</th></tr></thead><tbody></tbody></table><div id="emptyPedido" class="empty-state"><div class="empty-icon">📋</div><strong>Nenhum item no pedido</strong><span>Preencha o formulário para adicionar o primeiro item.</span></div></div></section></div></section>
     <section id="itens" class="page"><div class="card"><div class="toolbar"><h3 style="margin:0;flex:1">Itens do Pedido</h3><input class="search" id="buscaItens" placeholder="Buscar por código, descrição ou categoria..."><button class="btn green" style="width:auto" id="gerarPlanilhaBtn2">Gerar Planilha</button></div><div class="table-wrap"><table id="tabelaItensCompleta"><thead><tr><th>Data</th><th>Categoria</th><th>Código</th><th>Descrição</th><th>Capacidade</th><th>Estoque Atual</th><th>Pedir</th><th>Ações</th></tr></thead><tbody></tbody></table></div></div></section>
     <section id="gerenciar" class="page"><div class="card"><div class="toolbar"><h3 style="margin:0;flex:1">Gerenciar Embalagens</h3><span class="badge">Sincronização automática</span></div><div class="tabs"><button class="tab active" data-tab="add">Adicionar</button><button class="tab" data-tab="edit">Editar/Remover</button></div><div id="tab-add" class="tab-content active"><div class="form-grid"><div class="field"><label>Categoria</label><input id="novaCategoria"></div><div class="field"><label>Código</label><input id="novoCodigo"></div><div class="field full"><label>Nome</label><input id="novoNome"></div><div class="field full"><label>Capacidade</label><input id="novaCapacidade" type="number"></div></div><button id="btnAdicionar" class="btn blue">➕ Adicionar Embalagem</button></div><div id="tab-edit" class="tab-content"><div class="toolbar"><input class="search" id="buscaEmb" placeholder="Buscar embalagem..."></div><div class="table-wrap"><table id="tabelaEmbalagens"><thead><tr><th>Categoria</th><th>Código</th><th>Nome</th><th>Capacidade</th><th>Ações</th></tr></thead><tbody></tbody></table></div></div></div></section>
-    <section id="config" class="page"><div class="card"><h3>Configurações</h3><p>O sistema funciona mesmo sem internet e sincroniza as alterações quando a conexão estiver disponível.</p><div class="actions"><button id="btnBackup" class="btn green">⬇️ Exportar Backup Local</button><button id="btnImportar" class="btn blue">⬆️ Importar Backup Local</button><button id="btnAtualizar" class="btn purple">🔄 Atualizar dados online</button><button id="btnCheckUpdate" class="btn blue">🚀 Verificar atualizações</button></div><div class="version-line"><span>Versão do app</span><small id="appVersionLabel">2026.10.25.2</small></div><input type="file" id="fileBackup" accept="application/json" style="display:none"></div></section>
-    <footer class="footer">🛡️ <strong>Controle de Embalagens</strong> • Criado por Marina Martins Costa • Versão 2026.10.25.2 • Sincronização automática</footer>
+    <section id="config" class="page"><div class="card"><h3>Configurações</h3><p>O sistema funciona mesmo sem internet e sincroniza as alterações quando a conexão estiver disponível.</p><div class="actions"><button id="btnBackup" class="btn green">⬇️ Exportar Backup Local</button><button id="btnImportar" class="btn blue">⬆️ Importar Backup Local</button><button id="btnAtualizar" class="btn purple">🔄 Atualizar dados online</button><button id="btnCheckUpdate" class="btn blue">🚀 Verificar atualizações</button></div><div class="version-line"><span>Versão do app</span><small id="appVersionLabel">2026.10.25.3</small></div><input type="file" id="fileBackup" accept="application/json" style="display:none"></div></section>
+    <footer class="footer">🛡️ <strong>Controle de Embalagens</strong> • Criado por Marina Martins Costa • Versão 2026.10.25.3 • Sincronização automática</footer>
   </main>
 </div>
 <nav class="mobile-bottom-nav" aria-label="Menu mobile">
@@ -144,7 +144,7 @@
 const SUPABASE_URL='https://yozpvgzmaztqmtzerokz.supabase.co';
 const SUPABASE_KEY='sb_publishable_9sirQ0FqmJXRnk1beQgmSA_Yq_Enp7C';
 const supabaseClient=(window.supabase&&SUPABASE_URL&&SUPABASE_KEY)?window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY):null;
-const APP_VERSION='2026.10.25.2';
+const APP_VERSION='2026.10.25.3';
 const basePadrao=[
 {categoria:'PRIMÁRIA',codigo:'ETJ.001',nome:'Estojo 06 - Grande Raiar',capacidade:60},{categoria:'PRIMÁRIA',codigo:'ETJ.010',nome:'Estojo 10 - Médio Raiar',capacidade:80},{categoria:'PRIMÁRIA',codigo:'ETJ.003',nome:'Estojo 10 - Grande Raiar',capacidade:225},{categoria:'PRIMÁRIA',codigo:'ETJ.004',nome:'Estojo 10 - Jumbo Raiar',capacidade:80},{categoria:'PRIMÁRIA',codigo:'ETJ.005',nome:'Estojo 10 - Grande HNT',capacidade:40},{categoria:'PRIMÁRIA',codigo:'ETJ.006',nome:'Estojo 10 - Grande Raízs',capacidade:40},{categoria:'PRIMÁRIA',codigo:'ETJ.007',nome:'Estojo 10 - Grande Taeq',capacidade:40},{categoria:'PRIMÁRIA',codigo:'ETJ.008',nome:'Estojo 10 - Grande Mambo',capacidade:40},{categoria:'PRIMÁRIA',codigo:'ETJ.012',nome:'Estojo 10 - Grande Carrefour BIO',capacidade:40},{categoria:'PRIMÁRIA',codigo:'ETJ.011',nome:'Estojo 10 - Grande Benassi',capacidade:40},{categoria:'PRIMÁRIA',codigo:'ETJ.013',nome:'Estojo 18 - Grande Raiar',capacidade:32},{categoria:'PRIMÁRIA',codigo:'BDJ.001',nome:'Bandeja 30 Ovos - Polpa',capacidade:30},{categoria:'PRIMÁRIA',codigo:'BLT.001',nome:'Blister 20 - Grande Raiar',capacidade:50},{categoria:'PRIMÁRIA',codigo:'BLT.002',nome:'Blister 20 - Grande Sams',capacidade:10},{categoria:'PRIMÁRIA',codigo:'BLT.003',nome:'Blister 20 - Grande HNT',capacidade:10},{categoria:'PRIMÁRIA',codigo:'BLT.005',nome:'Blister 10 Ovos - OBA',capacidade:16},{categoria:'PRIMÁRIA',codigo:'BLT.006',nome:'Blister 20 - Grande OBA',capacidade:10},{categoria:'PRIMÁRIA',codigo:'BLT.009',nome:'Blister 30 - Grande Raiar',capacidade:15},{categoria:'PRIMÁRIA',codigo:'BLT.010',nome:'Blister 20 - Médio Raiar',capacidade:15},{categoria:'PRIMÁRIA',codigo:'BLT.011',nome:'Blister 30 - Médio Raiar',capacidade:10},{categoria:'PRIMÁRIA',codigo:'BLT.008',nome:'Blister 20 - Grande Benassi',capacidade:5},{categoria:'PRIMÁRIA',codigo:'BLT.007',nome:'Blister 20 - Grande Taeq',capacidade:10},{categoria:'PRIMÁRIA',codigo:'BLT.012',nome:'Blister 20 - Grande Sitio Verde',capacidade:10},{categoria:'PRIMÁRIA',codigo:'TMP.001',nome:'Tampa 30 Ovos - PVC',capacidade:4},{categoria:'PRIMÁRIA',codigo:'TMP.002',nome:'Tampa 30 Ovos - Polpa',capacidade:10},{categoria:'PRIMÁRIA',codigo:'ENC.001',nome:'Plástico Encolhível - Selagem',capacidade:2},{categoria:'SECUNDÁRIA',codigo:'CXA.001',nome:'Caixa 240/360 - Bandeja 30 Ovos',capacidade:600},{categoria:'SECUNDÁRIA',codigo:'CXA.002',nome:'Caixa 90 - Estojo 06 Ovos',capacidade:800},{categoria:'SECUNDÁRIA',codigo:'CXA.003',nome:'Caixa 240 - Estojo 10 Jumbo',capacidade:600},{categoria:'SECUNDÁRIA',codigo:'CXA.005',nome:'Caixa 240 - Estojo 10',capacidade:1400},{categoria:'SECUNDÁRIA',codigo:'CXA.006',nome:'Caixa 240 - Blister 20 Ovos',capacidade:1600},{categoria:'SECUNDÁRIA',codigo:'CXA.007',nome:'Caixa 240 - Blister 30 Ovos',capacidade:600},{categoria:'SECUNDÁRIA',codigo:'CXA.008',nome:'Caixa 270 - Estojo 18 Ovos',capacidade:300},{categoria:'DIVISÓRIAS',codigo:'DIV.001',nome:'Divisória 240/360 - Bandeja 30 Ovos',capacidade:1600},{categoria:'DIVISÓRIAS',codigo:'DIV.002',nome:'Divisória 90 - Estojo 06 Ovos',capacidade:2000},{categoria:'DIVISÓRIAS',codigo:'DIV.003',nome:'Divisória 240 - Estojo 10 Jumbo',capacidade:1500},{categoria:'DIVISÓRIAS',codigo:'DIV.005',nome:'Divisória 240 - Estojo 10',capacidade:2000},{categoria:'DIVISÓRIAS',codigo:'DIV.006',nome:'Divisória 240 - Blister 20 Ovos',capacidade:4800},{categoria:'DIVISÓRIAS',codigo:'DIV.007',nome:'Divisória 240 - Blister 30 Ovos',capacidade:1600},{categoria:'DIVISÓRIAS',codigo:'DIV.008',nome:'Divisória 270 - Estojo 18 Ovos',capacidade:750},{categoria:'OUTROS',codigo:'FIT.001',nome:'Fita Adesiva - Transparente',capacidade:15},{categoria:'OUTROS',codigo:'RBB.001',nome:'Ribbon',capacidade:5},{categoria:'OUTROS',codigo:'ETQ.001',nome:'Etiqueta Couche 100x130',capacidade:5},{categoria:'OUTROS',codigo:'ETQ.005',nome:'Etiqueta Couche 33x21x3',capacidade:5},{categoria:'OUTROS',codigo:'ENC.002',nome:'Cinta do Estojo de 06 (Sampling)',capacidade:0},{categoria:'OUTROS',codigo:'CNT.001',nome:'Cantoneira',capacidade:25},{categoria:'OUTROS',codigo:'STC.001',nome:'Strecht',capacidade:40},{categoria:'RÓTULOS',codigo:'RTL.003',nome:'Rótulo Papel 30 Ovos - Jumbo Raiar',capacidade:10},{categoria:'RÓTULOS',codigo:'RTL.014',nome:'Rótulo Cinta Estojo 10 - Grande Oba',capacidade:30},{categoria:'RÓTULOS',codigo:'RTL.020',nome:'Rótulo Papel 30 Ovos - Médio Raiar',capacidade:10}
 ];
@@ -433,51 +433,108 @@ async function atualizarDadosRemotos(){
     setTimeout(()=>$('splash').classList.add('hide'),450);
   }
 let waitingServiceWorker=null;
-function mostrarAtualizacaoDisponivel(reg){
-  if(!reg || !reg.waiting) return;
-  waitingServiceWorker=reg.waiting;
+let versaoRemotaDisponivel=null;
+let refreshingApp=false;
+let atualizacaoEmCurso=false;
+
+function mostrarAtualizacaoDisponivel(reg,versaoPublicada=null){
+  if(!reg?.waiting && !versaoPublicada)return;
+  waitingServiceWorker=reg?.waiting||waitingServiceWorker;
+  if(versaoPublicada)versaoRemotaDisponivel=versaoPublicada;
   const banner=$('updateBanner');
-  if(banner) banner.classList.add('show');
-  toast('Nova versão disponível','Toque em Atualizar agora para aplicar.');
+  if(banner&&!banner.classList.contains('show')){
+    banner.classList.add('show');
+    toast('Nova versão disponível','Toque em Atualizar agora para aplicar.');
+  }
 }
-function esconderAtualizacao(){const b=$('updateBanner'); if(b)b.classList.remove('show')}
-async function verificarAtualizacaoManual(){
-  if(!('serviceWorker' in navigator)){toast('Atualização automática indisponível','Este navegador não suporta Service Worker.');return}
+function esconderAtualizacao(){
+  const b=$('updateBanner');if(b)b.classList.remove('show');
+}
+async function consultarVersaoPublicada(){
   try{
-    const reg=await navigator.serviceWorker.getRegistration('./');
-    if(!reg){toast('App ainda não instalado em cache','Abra novamente depois de alguns segundos.');return}
-    await reg.update();
-    if(reg.waiting){mostrarAtualizacaoDisponivel(reg);return}
-    toast('Sistema atualizado','Você já está usando a versão mais recente.');
-  }catch(e){toast('Não foi possível verificar atualizações','Confira sua conexão e tente novamente.');}
+    const url=new URL('./version.json',window.location.href);
+    url.searchParams.set('_check',String(Date.now()));
+    const response=await fetch(url.toString(),{cache:'no-store'});
+    if(!response.ok)throw new Error('Não foi possível consultar a versão publicada');
+    const data=await response.json();
+    return typeof data.version==='string'?data.version:null;
+  }catch(e){
+    console.warn('Falha ao consultar versão online:',e);
+    return null;
+  }
+}
+async function verificarAtualizacaoManual(){
+  try{
+    const reg=('serviceWorker' in navigator)?await navigator.serviceWorker.getRegistration('./'):null;
+    if(reg)await reg.update();
+    const publicada=await consultarVersaoPublicada();
+    if(publicada&&publicada!==APP_VERSION){mostrarAtualizacaoDisponivel(reg,publicada);return}
+    if(reg?.waiting){mostrarAtualizacaoDisponivel(reg);return}
+    if(publicada===APP_VERSION)toast('Sistema atualizado','Você já está usando a versão mais recente.');
+    else toast('Versão não confirmada','Confira sua conexão e tente novamente.');
+  }catch(e){console.warn(e);toast('Falha na verificação','Confira sua conexão e tente novamente.')}
 }
 function configurarAtualizacaoAutomatica(reg){
-  if(!reg) return;
-  if(reg.waiting) mostrarAtualizacaoDisponivel(reg);
+  if(!reg)return;
+  if(reg.waiting)mostrarAtualizacaoDisponivel(reg);
   reg.addEventListener('updatefound',()=>{
     const novo=reg.installing;
-    if(!novo) return;
+    if(!novo)return;
     novo.addEventListener('statechange',()=>{
       if(novo.state==='installed' && navigator.serviceWorker.controller){
-        mostrarAtualizacaoDisponivel(reg);
+        mostrarAtualizacaoDisponivel(reg,versaoRemotaDisponivel);
       }
     });
   });
-}
-let refreshingApp=false;
-if('serviceWorker' in navigator){
-  navigator.serviceWorker.addEventListener('controllerchange',()=>{
-    if(refreshingApp) return;
-    refreshingApp=true;
-    window.location.reload();
+  consultarVersaoPublicada().then(publicada=>{
+    if(publicada&&publicada!==APP_VERSION)mostrarAtualizacaoDisponivel(reg,publicada);
   });
 }
-function aplicarAtualizacao(){
-  if(waitingServiceWorker){
-    setSync('pending','Atualizando...');
-    waitingServiceWorker.postMessage({type:'SKIP_WAITING'});
-  }else{
-    window.location.reload();
+function navegarParaVersaoAtualizada(){
+  if(refreshingApp)return;
+  refreshingApp=true;
+  const url=new URL(window.location.href);
+  url.searchParams.set('_app_version',versaoRemotaDisponivel||APP_VERSION);
+  url.searchParams.set('_refresh',String(Date.now()));
+  window.location.replace(url.toString());
+}
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.addEventListener('controllerchange',()=>{
+    // Se o controle do PWA mudou, navega com URL inédita para evitar cópia antiga.
+    if(atualizacaoEmCurso||versaoRemotaDisponivel)navegarParaVersaoAtualizada();
+  });
+}
+async function aplicarAtualizacao(){
+  if(atualizacaoEmCurso||refreshingApp)return;
+  if(!navigator.onLine){toast('Sem internet','Conecte-se para baixar a nova versão.');return}
+  atualizacaoEmCurso=true;
+  const button=$('updateNow');
+  if(button)button.disabled=true;
+  try{
+    setSync('pending','Atualizando aplicativo...');
+    const publicada=await consultarVersaoPublicada();
+    if(publicada&&publicada!==APP_VERSION)versaoRemotaDisponivel=publicada;
+    const reg=('serviceWorker' in navigator)?await navigator.serviceWorker.getRegistration('./'):null;
+    if(reg)await reg.update();
+    const worker=reg?.waiting||waitingServiceWorker;
+    if(worker&&worker.state!=='redundant'&&'serviceWorker' in navigator){
+      await new Promise(resolve=>{
+        const timer=setTimeout(resolve,2400);
+        navigator.serviceWorker.addEventListener('controllerchange',()=>{
+          clearTimeout(timer);resolve();
+        },{once:true});
+        worker.postMessage({type:'SKIP_WAITING'});
+      });
+    }
+    // Não depende exclusivamente do evento controllerchange, que pode não chegar no PWA.
+    navegarParaVersaoAtualizada();
+  }catch(e){
+    console.warn('Falha ao aplicar a atualização:',e);
+    toast('Recarregando versão','Verificando os arquivos mais recentes.');
+    navegarParaVersaoAtualizada();
+  }finally{
+    atualizacaoEmCurso=false;
+    if(button)button.disabled=false;
   }
 }
 
